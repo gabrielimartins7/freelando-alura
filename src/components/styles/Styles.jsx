@@ -2,7 +2,7 @@ import { css, Global } from "@emotion/react";
 
 const stylesGlobal = css`
     * {
-        font-family: "Dosis", serif;
+        font-family: "Oswald", sans-serif;
     }
 `
 
