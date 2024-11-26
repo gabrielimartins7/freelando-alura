@@ -9,9 +9,14 @@ const theme = {
         },
         secondary: {
             light: '#EBEAF9'
-        }
+        },
+        neutral: {
+            grayDark: '#373737'
+        },
+        white: '#FFFFF'
     },
     spacing: {
+        xs: '8px',
         small: '16px',
         normal: '32px'
     },
