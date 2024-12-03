@@ -13,6 +13,7 @@ const InputStyled = styled.input`
     width: 100%;
     box-sizing: border-box;
     margin-top: ${props => props.theme.spacing.xs};
+    margin-bottom: ${props => props.theme.spacing.small};
     background: ${props => props.theme.colors.white};
     border: 1px solid ${props => props.theme.colors.neutral.grayDark};
     border-radius: ${props => props.theme.spacing.small};
