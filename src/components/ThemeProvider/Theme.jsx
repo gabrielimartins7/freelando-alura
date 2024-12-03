@@ -16,7 +16,8 @@ const theme = {
             grayDark: '#373737',
         },
         white: '#FFFFF',
-        dark: '#B61B00'
+        dark: '#B61B00',
+        focus:'#B009FF'
     },
     spacing: {
         xs: '8px',

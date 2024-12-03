@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-grid-system';
 
 import { ButtonForm } from './components/ButtonForm';
 import { Card } from './components/Card';
+import { DropDown } from './components/DropDown/DropDown';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { Input } from './components/Input';
@@ -12,6 +13,7 @@ import { Typography } from './components/Typography';
 import { Styles } from './components/styles/Styles';
 
 import { FreelandoLogo } from "./components/Icons/FreelandoLogo";
+
 
 const states = [
   { "text": "Acre", "value": "AC" },
@@ -72,7 +74,7 @@ function App() {
               </Row>
               <Row>
                 <Col lg={4} md={4} sm={4}>
-                  <Input label="Estado" />
+                  <DropDown title="Estado" options={states} />
                 </Col>
                 <Col lg={4} md={4} sm={4}>
                   <Input label="Cidade" />
