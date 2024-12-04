@@ -1,6 +1,9 @@
 import { useState } from "react";
 import styled from "@emotion/styled"
 
+import { DropDownStyles } from "./DropDownStyles";
+import { ItemList } from "./ItemList";
+
 const StylesLabel = styled.label`
     display: block;
     width: 100%;
@@ -37,27 +40,83 @@ const StyledButton = styled.button`
 
 export const DropDown = ({ title, options }) => {
     const [open, setOpen] = useState(false);
+    const [selected, setSelected] = useState(null);
+    const [focus, setFocus] = useState(null);
+
+    const manipulateKey = (evento) => {
+        setOpen(true);
+        // eslint-disable-next-line default-case
+        switch (evento.key) {
+            case 'ArrowDown':
+                evento.preventDefault();
+                setFocus(oldFocus => {
+                    if (oldFocus === null) {
+                        return 0;
+                    }
+                    if (oldFocus === (options.length - 1)) {
+                        return options.length - 1;
+                    }
+                    return oldFocus += 1;
+                })
+            break;
+            case 'ArrowUp':
+                evento.preventDefault();
+                setFocus(oldFocus => {
+                    if (!oldFocus) {
+                        return 0;
+                    }
+                    return oldFocus -= 1;
+                })
+            break;
+            case 'Enter':
+                    evento.preventDefault();
+                    setFocus(null)
+                    setOpen(false)
+                    setSelected(options[focus])
+            break;
+            case 'Tab':
+                setFocus(null)
+                setOpen(false)
+            break;
+            case 'Escape':
+                evento.preventDefault();
+                setFocus(null)
+                setOpen(false)
+            break;
+            default:
+                break;
+
+        }
+    }
+
     return (
         <StylesLabel>
             {title}
-            <StyledButton onClick={() => setOpen(!open)}>
+            <StyledButton 
+                open={open}
+                onClick={() => setOpen(!open)}
+                onKeyDown={manipulateKey}
+            >
                 <div>
-                    Selecione
+                    { selected ? selected.text : 'selected'}
                 </div>
                 <div>
                     <span>{open ? '▲' : '▼'}</span>
                 </div>
             </StyledButton>
-            {open && 
-                <ul>
+            {open &&
+                <DropDownStyles>
                     {
-                        options.map(options => 
-                            <li key={options.value}>
-                                {options.text}
-                            </li>
+                        options.map((options, index) => <ItemList
+                            key={options.value}
+                            activeFocus={index === focus}
+                            onClick={() => setSelected(options)}
+                            >
+                            {options.text}
+                        </ItemList>
                         )
                     }
-                </ul>
+                </DropDownStyles>
             }
         </StylesLabel>
     )
