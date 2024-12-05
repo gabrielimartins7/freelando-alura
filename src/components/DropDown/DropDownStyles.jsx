@@ -13,5 +13,5 @@ export const DropDownStyles = styled.ul`
     border-bottom-right-radius: 18px;
     border-top: none;
     list-style: none;
-    background-color: ${props => props.theme.colors.white};
+    background-color: #FFFFFF;
 `
