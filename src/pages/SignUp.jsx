@@ -49,18 +49,6 @@ export const SignUp = () => {
   return (
     <Theme>
       <Styles />
-      <Header>
-        <Container>
-          <Row align="center">
-            <Col>
-              <FreelandoLogo />
-            </Col>
-            <Col style={{ textAlign: 'right' }}>
-              <Link>Login</Link>
-            </Col>
-          </Row>
-        </Container>
-      </Header>
       <Container xxx={6} xxl={6} xl={6} lg={6} md={8} sm={12} style={{ margin: '80px 0' }}>
         <Row justify="center">
           <Col lg={6} md={8} sm={12}>
@@ -111,19 +99,7 @@ export const SignUp = () => {
           </Col>
         </Row>
       </Container>
-      <Footer>
-        <Container>
-          <Row align="center">
-            <Col>
-              <FreelandoLogo height={40} width={176} />
-              <Typography variant="caption" component="caption" >Desenvolvido por Gabrieli Martins. Projeto fictício sem fins comerciais.</Typography>
-            </Col>
-            <Col style={{ textAlign: 'right' }}>
-              <Typography variant="caption" component="caption" >Acesse nossas redes:</Typography>
-            </Col>
-          </Row>
-        </Container>
-      </Footer>
+      
     </Theme>
   );
 }
