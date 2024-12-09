@@ -3,6 +3,8 @@ import { Col, Row } from "react-grid-system";
 import { Typography } from "../../components/Typography";
 import { Link } from "../../components/Link";
 
+import { Link as RouterLink } from "react-router-dom";
+
 import client from "../../assets/cliente.png";
 import freela from "../../assets/freela.png";
 
@@ -13,8 +15,10 @@ export const CustomerSelection = () => {
             <Typography variant="h3" component="h2">Como podemos te ajudar?</Typography>
             <Row>
                 <Col md={6} sm={12}>
-                    <img src={client} alt="Mulher de pele negra, cabelo black trabalhando" />
-                    <Typography variant="body" component="body">Sou cliente e preciso de um freela!</Typography>
+                    <RouterLink to={'Interests'}>
+                        <img src={client} alt="Mulher de pele negra, cabelo black trabalhando" />
+                        <Typography variant="body" component="body">Sou cliente e preciso de um freela!</Typography>
+                    </RouterLink>
                 </Col>
                 <Col md={6} sm={12}>
                     <img src={freela} alt="Homem de pele branca, cabelo e barba curta em uma reunião" />

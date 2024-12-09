@@ -11,7 +11,7 @@ export const router = createBrowserRouter([
         element: <Baselayout />,
         children: [
             {
-                path: "signUp",
+                path: "",
                 element: <BaselayoutSignUp />,            
                 children: [
                     {
@@ -19,8 +19,8 @@ export const router = createBrowserRouter([
                         element: <CustomerSelection />,
                     },
                     {
-                        path: "client",
-                        element: <h1>Interesses</h1>
+                        path: "Interests",
+                        element: <h1>interesses</h1>
                     },
                     {
                         path: "personal-data",

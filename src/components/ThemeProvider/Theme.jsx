@@ -13,6 +13,8 @@ const theme = {
             light: '#EBEAF9'
         },
         neutral: {
+            gray: '#F5F5F5',
+            grayMedium: '#E8E8E8',
             grayDark: '#373737',
         },
         white: '#FFFFF',
