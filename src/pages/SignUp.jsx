@@ -54,7 +54,6 @@ export const SignUp = () => {
           <Col lg={6} md={8} sm={12}>
             <Card>
               <Typography variant="h1" component="h1" >Freelando</Typography>
-              <Typography variant="body" component="body" >Crie seu perfil gratuitamente para começar a trabalhar com os melhores freelancers. Em seguida, você poderá dar mais detalhes sobre suas demandas e sobre sua forma de trabalho.</Typography>
               <Row>
                 <Col>
                   <Input label="Nome Completo" />
@@ -79,20 +78,6 @@ export const SignUp = () => {
                 </Col>
                 <Col lg={6} md={6} sm={6}>
                   <Input label="Repita a senha" />
-                </Col>
-              </Row>
-              <Row>
-                <Col lg={6} md={6} sm={6}>
-                  <ButtonForm variant='secundary'>
-                    Anterios
-                  </ButtonForm>
-                </Col>
-                <Col lg={6} md={6} sm={6}>
-                  <div style={{ textAlign: 'right' }}>
-                    <ButtonForm>
-                      Próxima
-                    </ButtonForm>
-                  </div>
                 </Col>
               </Row>
             </Card>
