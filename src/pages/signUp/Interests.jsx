@@ -43,9 +43,11 @@ export const Interests = () => {
             <GrupRadio opcoes={options} valor={option} onChange={setOption} />
             <Row>
                 <Col lg={6} md={6} sm={6}>
-                  <ButtonForm variant='secundary'>
-                    Anterios
-                  </ButtonForm>
+                  <Link to='..'>
+                    <ButtonForm variant='secundary'>
+                      Anterios
+                    </ButtonForm>
+                  </Link>
                 </Col>
                 <Col lg={6} md={6} sm={6}>
                   <div style={{ textAlign: 'right' }}>
