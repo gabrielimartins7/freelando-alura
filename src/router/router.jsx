@@ -5,6 +5,7 @@ import { BaselayoutSignUp } from "../pages/signUp/BaselayoutSignUp";
 import { CustomerSelection } from "../pages/signUp/CustomerSelection";
 import { Interests } from "../pages/signUp/Interests";
 import { PersonalData } from "../pages/signUp/PersonalData";
+import { Completed } from "../pages/signUp/Completed";
 
 
 export const router = createBrowserRouter([
@@ -30,7 +31,7 @@ export const router = createBrowserRouter([
                     },
                     {
                         path: "completed",
-                        element: <h1>Concluido</h1>
+                        element: <Completed />
                     }
                 ]
             }
