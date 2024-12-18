@@ -22,11 +22,15 @@ const InputStyled = styled.input`
     font-size: 14px;
     line-height: 17px;
 `;
-export const Input = ({ label }) => {
+export const Input = ({ label, value, onChange, type = 'text' }) => {
     return (
         <LabelStyled>
             {label}
-            <InputStyled />
+            <InputStyled
+                value={value}
+                onChange={evento => onChange(evento.target.value)}
+                type={type}
+            />
         </LabelStyled>
     )
 }

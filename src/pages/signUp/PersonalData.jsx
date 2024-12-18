@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { Col, Row } from "react-grid-system";
 
+import { useSignUpUserContext } from "../../context/SignUpUser";
+
 import { ButtonForm } from "../../components/ButtonForm";
 import { DropDown } from "../../components/DropDown/DropDown";
 import { Input } from "../../components/Input";
@@ -37,34 +39,75 @@ const states = [
 ]
 
 export const PersonalData = () => {
+  const { 
+    user,
+    setFullName,
+    setCity,
+    setEmail,
+    setPassword,
+    setConfirmPassword,
+    setUf,
+    submitUser
+  } = useSignUpUserContext();
+
+  const signUpSucess = (evento) => {
+    evento.preventDefault();
+    submitUser();
+  }
+
   return (
-    <div>
+    <form onSubmit={signUpSucess}>
       <Typography variant="h1" component="h1">Crie seu cadastro</Typography>
       <Typography variant="body" component="body" >Crie seu perfil gratuitamente para começar a trabalhar com os melhores freelancers. Em seguida, você poderá dar mais detalhes sobre suas demandas e sobre sua forma de trabalho.</Typography>
       <Row>
         <Col>
-          <Input label="Nome Completo" />
+          <Input 
+            label="Nome Completo"
+            value={user.fullName}
+            onChange={setFullName}
+          />
         </Col>
       </Row>
       <Row>
         <Col lg={4} md={4} sm={4}>
-          <DropDown title="Estado" options={states} />
+          <DropDown
+            title="Estado"
+            options={states}
+            value={user.uf}
+            onChange={setUf}
+          />
         </Col>
         <Col lg={4} md={4} sm={4}>
-          <Input label="Cidade" />
+          <Input
+            label="Cidade"
+            value={user.city}
+            onChange={setCity}
+          />
         </Col>
       </Row>
       <Row>
         <Col>
-          <Input label="Email" />
+          <Input
+            label="Email"
+            value={user.email}
+            onChange={setEmail}
+          />
         </Col>
       </Row>
       <Row>
         <Col lg={6} md={6} sm={6}>
-          <Input label="Senha" />
+          <Input
+            label="Senha"
+            value={user.password}
+            onChange={setPassword}
+          />
         </Col>
         <Col lg={6} md={6} sm={6}>
-          <Input label="Repita a senha" />
+          <Input
+            label="Repita a senha"
+            value={user.confirmPassword}
+            onChange={setConfirmPassword}
+          />
         </Col>
       </Row>
       <Row>
@@ -77,14 +120,12 @@ export const PersonalData = () => {
         </Col>
         <Col lg={6} md={6} sm={6}>
           <div style={{ textAlign: 'right' }}>
-            <Link to='/completed'>
               <ButtonForm>
                 Próxima
               </ButtonForm>
-            </Link>
           </div>
         </Col>
       </Row>
-    </div>
+    </form>
   )
 }

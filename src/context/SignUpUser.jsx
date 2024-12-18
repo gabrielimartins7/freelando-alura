@@ -1,4 +1,5 @@
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const initialUser = {
     profile: '',
@@ -8,7 +9,8 @@ const initialUser = {
     city: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    submitUser: ''
 }
 
 export const SignUpUserContext = createContext({
@@ -21,14 +23,17 @@ export const SignUpUserContext = createContext({
     setEmail: () => null,
     setPassword: () => null,
     setConfirmPassword: () => null,
+    submitUser: () => null
 })
 
 export const useSignUpUserContext = () => {
-    return useState(SignUpUserContext);
+    return useContext(SignUpUserContext);
 }
 
 export const SignUpUserProvider = ({ children }) => {
     const [user, setUser] = useState(initialUser);
+
+    const navigate = useNavigate();
 
     const setProfile = (profile) => {
         setUser(previousStatus => {
@@ -70,6 +75,10 @@ export const SignUpUserProvider = ({ children }) => {
             return {...previousStatus, confirmPassword}
         })
     };
+    const submitUser = () => {
+        console.log(user);
+        navigate('/completed')
+    }
 
     const context = {
         user,
@@ -81,6 +90,7 @@ export const SignUpUserProvider = ({ children }) => {
         setEmail,
         setPassword,
         setConfirmPassword,
+        submitUser
     }
 
     return(

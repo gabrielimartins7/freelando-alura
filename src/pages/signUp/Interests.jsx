@@ -1,6 +1,7 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row } from "react-grid-system";
+
+import { useSignUpUserContext } from "../../context/SignUpUser";
 
 import { ButtonForm } from "../../components/ButtonForm";
 import GrupRadio from "../../components/Radio/GrupRadio";
@@ -34,13 +35,17 @@ const options = [
 ]
 
 export const Interests = () => {
-    const [option, setOption] = useState('')
+  const { user, setInterests } = useSignUpUserContext();
 
     return(
         <div style={{ textAlign: 'center'}}>
             <Typography variant="h1" component="h1">Crie seu cadastro</Typography>
             <Typography variant="h3" component="h2">Qual a área de interesse?</Typography>
-            <GrupRadio opcoes={options} valor={option} onChange={setOption} />
+            <GrupRadio 
+              opcoes={options}
+              valor={user.interests}
+              onChange={setInterests}
+            />
             <Row>
                 <Col lg={6} md={6} sm={6}>
                   <Link to='..'>

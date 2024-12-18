@@ -38,9 +38,8 @@ const StyledButton = styled.button`
     }
 `
 
-export const DropDown = ({ title, options }) => {
+export const DropDown = ({ title, options, value, onChange }) => {
     const [open, setOpen] = useState(false);
-    const [selected, setSelected] = useState(null);
     const [focus, setFocus] = useState(null);
 
     const manipulateKey = (evento) => {
@@ -72,7 +71,7 @@ export const DropDown = ({ title, options }) => {
                     evento.preventDefault();
                     setFocus(null)
                     setOpen(false)
-                    setSelected(options[focus])
+                    onChange(options[focus])
             break;
             case 'Tab':
                 setFocus(null)
@@ -96,9 +95,10 @@ export const DropDown = ({ title, options }) => {
                 open={open}
                 onClick={() => setOpen(!open)}
                 onKeyDown={manipulateKey}
+                type="button"
             >
                 <div>
-                    { selected ? selected.text : 'selected'}
+                    { value ? value.text : 'selected'}
                 </div>
                 <div>
                     <span>{open ? '▲' : '▼'}</span>
@@ -110,7 +110,7 @@ export const DropDown = ({ title, options }) => {
                         options.map((options, index) => <ItemList
                             key={options.value}
                             activeFocus={index === focus}
-                            onClick={() => setSelected(options)}
+                            onClick={() => onChange(options)}
                             >
                             {options.text}
                         </ItemList>
