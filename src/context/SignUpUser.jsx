@@ -10,7 +10,8 @@ const initialUser = {
     email: '',
     password: '',
     confirmPassword: '',
-    submitUser: ''
+    submitUser: '',
+    selectInterests: ''
 }
 
 export const SignUpUserContext = createContext({
@@ -23,7 +24,8 @@ export const SignUpUserContext = createContext({
     setEmail: () => null,
     setPassword: () => null,
     setConfirmPassword: () => null,
-    submitUser: () => null
+    submitUser: () => null,
+    selectInterests: () => null
 })
 
 export const useSignUpUserContext = () => {
@@ -79,6 +81,9 @@ export const SignUpUserProvider = ({ children }) => {
         console.log(user);
         navigate('/completed')
     }
+    const selectInterests = () => {
+        return !!user.profile
+    }
 
     const context = {
         user,
@@ -90,7 +95,8 @@ export const SignUpUserProvider = ({ children }) => {
         setEmail,
         setPassword,
         setConfirmPassword,
-        submitUser
+        submitUser,
+        selectInterests
     }
 
     return(

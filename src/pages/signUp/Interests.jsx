@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Col, Row } from "react-grid-system";
 
 import { useSignUpUserContext } from "../../context/SignUpUser";
@@ -6,6 +6,7 @@ import { useSignUpUserContext } from "../../context/SignUpUser";
 import { ButtonForm } from "../../components/ButtonForm";
 import GrupRadio from "../../components/Radio/GrupRadio";
 import { Typography } from "../../components/Typography";
+import { useEffect } from "react";
 
 const options = [
   {
@@ -35,7 +36,18 @@ const options = [
 ]
 
 export const Interests = () => {
-  const { user, setInterests } = useSignUpUserContext();
+  const {
+    user,
+    setInterests,
+    selectInterests } = useSignUpUserContext();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!selectInterests()) {
+      navigate('goBack')
+    }
+  }, [navigate, selectInterests]);
 
     return(
         <div style={{ textAlign: 'center'}}>
