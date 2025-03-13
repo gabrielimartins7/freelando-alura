@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { createContext, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -78,8 +79,13 @@ export const SignUpUserProvider = ({ children }) => {
         })
     };
     const submitUser = () => {
-        console.log(user);
-        navigate('/completed')
+        axios.post('http://localhost:8080/auth/register', user)
+        .then(() => {
+            navigate('/completed')
+        })
+        .catch(erro => {
+            console.error(erro)
+        })
     }
     const selectInterests = () => {
         return !!user.profile
